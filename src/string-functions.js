@@ -54,6 +54,7 @@ function formatParagraph(paragraph, maxLineCharCount) {
   }
   
  function formatText(text, maxLineCharCount) {
+    if(!text.trim()) return "";
     const paragraphsArray = text.trim().split(/[\n\r]{2,}/gm);
     const formattedParagraphsArray = paragraphsArray.map(paragraph => {
       const cleanParagraph = paragraph.trim().replace(/\s{2,}|[\n\r]{1,}/gm, " ");
@@ -62,4 +63,4 @@ function formatParagraph(paragraph, maxLineCharCount) {
     return formattedParagraphsArray.join("\n\n");
   }
   
-export { formatText };
+export {hasWhiteSpace, getLines, formatParagraph, formatText };
