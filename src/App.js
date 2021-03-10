@@ -1,5 +1,6 @@
 import './App.css';
 import React from "react";
+import { formatText } from "./string-functions";
 
 function App() {
   const [textInput, setTextInput] = React.useState(`This is
@@ -18,11 +19,9 @@ This      is a second paragraph with extraneous whitespace.`);
   };
 
   const transformText = input => {
-    let output = input;
-    /*
-    your work goes here!
-    */
-    setTextOutput(output);
+    const maximumCharactersPerLine = 80;
+    const formattedText = formatText(textInput, maximumCharactersPerLine);
+    setTextOutput(formattedText);
   }
   
   return (
@@ -36,7 +35,7 @@ This      is a second paragraph with extraneous whitespace.`);
         </label>
         <input type="submit" value="Submit"/>
       </form>
-      <div id="result">
+      <div id="result" style={{ whiteSpace: "pre" }}>
         {textOutput}
       </div>
     </div>
