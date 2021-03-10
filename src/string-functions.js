@@ -6,9 +6,22 @@
 - Join array of lines back to paragraph. Separate successive lines by a new line character
 - Join paragraphs to string of text. Successive paragraphs are separated by double new line characters
 */
+
+/**
+ * Checks whether a string has white spaces 
+ * @param {string} str 
+ * @returns {boolean}
+ */
 function hasWhiteSpace(str) {
     return /\s/.test(str);
 }
+
+/**
+ * Splits paragraph into array of paragraph lines
+ * @param {string} paragraph 
+ * @param {number} maxLineCharCount 
+ * @returns {string[]}
+ */
 function getLines(paragraph, maxLineCharCount) {
     const words = paragraph.split(" ");
     const lines = [];
@@ -45,6 +58,12 @@ function getLines(paragraph, maxLineCharCount) {
     return lines;
 }
 
+/**
+ * Breaks paragraph into separate lines
+ * @param {string} paragraph 
+ * @param {number} maxLineCharCount 
+ * @returns {string}
+ */ 
 function formatParagraph(paragraph, maxLineCharCount) {
     if (!hasWhiteSpace(paragraph) || paragraph.length <= maxLineCharCount) {
       return paragraph; // One word paragraph or paragraph is one line long
@@ -53,6 +72,12 @@ function formatParagraph(paragraph, maxLineCharCount) {
     return lines.join("\n");
   }
   
+  /**
+   * Removes unnecessary characters and formats text into paragraphs and lines
+   * @param {string} text 
+   * @param {number} maxLineCharCount 
+   * @returns {string}
+   */
  function formatText(text, maxLineCharCount) {
     if(!text.trim()) return "";
     const paragraphsArray = text.trim().split(/[\n\r]{2,}/gm);
